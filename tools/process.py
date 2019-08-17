@@ -75,8 +75,10 @@ def combine(src, src_path):
 
     # find corresponding file in b_dir, could have a different extension
     basename, _ = os.path.splitext(os.path.basename(src_path))
+    # print(basename)
     for ext in [".png", ".jpg"]:
         sibling_path = os.path.join(a.b_dir, basename + ext)
+        print(sibling_path)
         if os.path.exists(sibling_path):
             sibling = im.load(sibling_path)
             break

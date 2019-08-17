@@ -31,13 +31,19 @@ function process {
 
 
 	# Create images with blank centers
-	python tools/process.py --input_dir /tmp/${root_tmp_folder}/_resized --operation blank --output_dir /tmp/${root_tmp_folder}/_blank
+	# python tools/process.py --input_dir /tmp/${root_tmp_folder}/_resized --operation blank --output_dir /tmp/${root_tmp_folder}/_blank
 	# Create images with edges
-	# python tools/process.py --input_dir /tmp/${root_tmp_folder}/_resized --operation edges --output_dir /tmp/${root_tmp_folder}/_edges
+	sudo mkdir -p /tmp/${root_tmp_folder}/_edges
+	python tools/edge.py --input_dir /tmp/${root_tmp_folder}/_resized --output_dir /tmp/${root_tmp_folder}/_edges
+	ls /tmp/${root_tmp_folder}/_edges
 
 
 	# Combine resized images with blanked images side by side
-	python tools/process.py --input_dir /tmp/${root_tmp_folder}/_resized --b_dir  /tmp/${root_tmp_folder}/_blank --operation combine --output_dir  /tmp/${root_tmp_folder}/_resized/_combined
+	# python tools/process.py --input_dir /tmp/${root_tmp_folder}/_resized --b_dir  /tmp/${root_tmp_folder}/_blank --operation combine --output_dir  /tmp/${root_tmp_folder}/_resized/_combined
+	
+	# Combine resized images with edge images side by side
+	python tools/process.py --input_dir /tmp/${root_tmp_folder}/_resized --b_dir  /tmp/${root_tmp_folder}/_edges --operation combine --output_dir  /tmp/${root_tmp_folder}/_resized/_combined
+	
 	# Split into train/val set
 	python tools/split.py --dir /tmp/${root_tmp_folder}/_resized/_combined
 	# make dir and copy final images
