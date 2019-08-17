@@ -1,0 +1,6 @@
+*.pyc
+tags
+test
+models
+.idea
+assets/

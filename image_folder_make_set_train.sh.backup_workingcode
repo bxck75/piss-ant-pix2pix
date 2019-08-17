@@ -1,0 +1,58 @@
+
+
+
+
+# from folder to pix2pix set and train/test
+# usage :./p2p_on_folder.sh <images folder> <epochs to train>
+
+# it wil make : 
+#  -- <image_folder>_resize (resized pix2pix training set)
+#  -- <image_folder>_train (training metrics) beside the original folder
+
+# index.html in the train folder has the evaluation of the training and test
+
+# set root tmp folder
+input_img_folder=${1}
+training_epochs=${2}
+root_tmp_folder='p2p_process_tmp'
+root_data_folder='/root/Bureaublad/data/'
+
+#remove old tmp files if any...
+sudo rm -r /tmp/${root_tmp_folder}
+
+# Resize source images
+python tools/process.py --input_dir ${input_img_folder} --operation resize --output_dir /tmp/${root_tmp_folder}/_resized
+
+# Create images with blank centers
+python tools/process.py --input_dir /tmp/${root_tmp_folder}/_resized --operation blank --output_dir /tmp/${root_tmp_folder}/_blank
+
+# Combine resized images with blanked images side by side
+python tools/process.py --input_dir /tmp/${root_tmp_folder}/_resized --b_dir  /tmp/${root_tmp_folder}/_blank --operation combine --output_dir  /tmp/${root_tmp_folder}/_resized/_combined
+
+# Split into train/val set
+python tools/split.py --dir /tmp/${root_tmp_folder}/_resized/_combined
+
+#echo ${input_img_folder}/resized
+sudo mkdir -p ${input_img_folder}_resize
+cp -rf /tmp/${root_tmp_folder}/_resized/_combined/ ${input_img_folder}_resize/
+
+
+echo "[Start training....]"
+#Training pix2pix
+echo ${input_img_folder}_train
+
+#start xterm for the tensorboard and chromium instances
+xterm -e "chromium --no-sandbox http://debian:6001 & tensorboard --port 6001 --logdir=${input_img_folder}_train " &  disown
+
+# Go!......
+python pix2pix.py --mode train --output_dir ${input_img_folder}_train --max_epochs ${training_epochs} --input_dir ${input_img_folder}_resize/_combined/train --which_direction BtoA
+
+
+echo "[Start testing....]"
+#Testing model trained so far
+xterm -hold -e "tensorboard --port 6002 --logdir=${input_img_folder}_test && chromium --no-sandbox http://debian:6002" & disown
+#start xterm for the tensorboard and chromium instances
+result_url=`python pix2pix.py --mode test --output_dir ${input_img_folder}_test --input_dir ${input_img_folder}_resize/_combined/val --checkpoint ${input_img_folder}_train`
+
+#remove tmp files
+sudo rm -r /tmp/${root_tmp_folder}
