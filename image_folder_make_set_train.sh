@@ -70,11 +70,11 @@ function test {
 	echo "[Start testing....]"
 	xterm_style="-misc-fixed-medium-r-normal--10-*-*-*-*-*-iso8859-15"
 	xterm_sizes="55x55+335+${x}"
-	xterm -fn $xterm_style -geometry $xterm_sizes -hold -e "tensorboard --port 6002 --logdir=${input_img_folder}_test" & disown
+	xterm -fn $xterm_style -geometry $xterm_sizes -hold -e "tensorboard --port 6002 --logdir=${input_img_folder}_train" & disown
 	xterm -fn $xterm_style -geometry $xterm_sizes -hold -e "chromium --no-sandbox http://debian:6002" &
 	# ((x+=185))
 	xterm_sizes="55x55+335+${x}"
-	xterm -fn $xterm_style -geometry $xterm_sizes -hold -e "python pix2pix.py --mode test --output_dir ${input_img_folder}_test --input_dir ${input_img_folder}_resize/_combined/val --checkpoint ${input_img_folder}_test" &
+	xterm -fn $xterm_style -geometry $xterm_sizes -hold -e "python pix2pix.py --mode test --output_dir ${input_img_folder}_test --input_dir ${input_img_folder}_resize/_combined/val --checkpoint ${input_img_folder}_train" &
 }
 
 function show_t_t {
