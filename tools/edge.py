@@ -28,7 +28,7 @@ for img_path in os.listdir(a.input_dir):
 	# cv2.imshow("Image", img)
 	# cv2.imshow("Sobelx", sobelx)
 	# cv2.imshow("Sobely", sobely)
-	cv2.imshow("Laplacian", laplacian)
+# 	cv2.imshow("Laplacian", laplacian)
 	# cv2.imshow("Canny", canny)
 
 	# # Converting the image to grayscale.
@@ -55,7 +55,7 @@ for img_path in os.listdir(a.input_dir):
 	# plt.subplot(121),plt.imshow(img,cmap = 'gray')
 	# plt.title('Original Image'), plt.xticks([]), plt.yticks([])
 	# plt.imshow(img_not,cmap = 'gray')
-	plt.imshow(img_not_high,cmap = 'gray')
+# 	plt.imshow(img_not_high,cmap = 'gray')
 	# plt.title('Edge Image'), plt.xticks([]), plt.yticks([])
 	# Negative
 	# write
