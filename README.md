@@ -1,3 +1,8 @@
+My addition to the stable training script
+[Apes-Pix2Pix](https://colab.research.google.com/github/bxck75/piss-ant-pix2pix/blob/master/modeltransferv2_apes.ipynb)
+[Insects-Pix2Pix](https://colab.research.google.com/github/bxck75/piss-ant-pix2pix/blob/master/modeltransferv2_insects.ipynb)
+[Garbagepailkids-Pix2Pix](https://colab.research.google.com/github/bxck75/piss-ant-pix2pix/blob/master/modeltransferv2_pailkids.ipynb)
+
 # Image-Colorization
 This repository tries to generate vehicle images with response to user sketch via Generative Adversarial networks(GAN). It is based on https://github.com/affinelayer/pix2pix-tensorflow and https://phillipi.github.io/pix2pix. \
 It is known that the training of GAN is difficult and requires a lot of tuning on hyper-parameters. Recently, it is suggested that by introducing a different loss function to train GAN based on Wasserstein distance(WGAN), the training will become much easier. The theory behind WGAN is rather difficult while the implementation is relatively simple. WGAN is attempted based on this repository(https://github.com/affinelayer/pix2pix-tensorflow) with only few lines of code modified in pix2pix.py.\
