@@ -1,4 +1,4 @@
-#My addition to the stable training script
+# Added Colabs and some handy scripts.....
 
 [Apes-Pix2Pix-Colab](https://colab.research.google.com/github/bxck75/piss-ant-pix2pix/blob/master/modeltransferv2_apes.ipynb)
 
