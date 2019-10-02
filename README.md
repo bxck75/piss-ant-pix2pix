@@ -1,7 +1,10 @@
-My addition to the stable training script
-[Apes-Pix2Pix](https://colab.research.google.com/github/bxck75/piss-ant-pix2pix/blob/master/modeltransferv2_apes.ipynb)
-[Insects-Pix2Pix](https://colab.research.google.com/github/bxck75/piss-ant-pix2pix/blob/master/modeltransferv2_insects.ipynb)
-[Garbagepailkids-Pix2Pix](https://colab.research.google.com/github/bxck75/piss-ant-pix2pix/blob/master/modeltransferv2_pailkids.ipynb)
+#My addition to the stable training script
+
+[Apes-Pix2Pix-Colab](https://colab.research.google.com/github/bxck75/piss-ant-pix2pix/blob/master/modeltransferv2_apes.ipynb)
+
+[Insects-Pix2Pix-Colab](https://colab.research.google.com/github/bxck75/piss-ant-pix2pix/blob/master/modeltransferv2_insects.ipynb)
+
+[Garbagepailkids-Pix2Pix-Colab](https://colab.research.google.com/github/bxck75/piss-ant-pix2pix/blob/master/modeltransferv2_pailkids.ipynb)
 
 # Image-Colorization
 This repository tries to generate vehicle images with response to user sketch via Generative Adversarial networks(GAN). It is based on https://github.com/affinelayer/pix2pix-tensorflow and https://phillipi.github.io/pix2pix. \
