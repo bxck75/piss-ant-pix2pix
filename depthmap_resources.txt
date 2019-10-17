@@ -1,0 +1,7 @@
+#repos
+git clone https://github.com/gautam678/Pix2Depth.git
+git clone https://github.com/bxck75/multiscale-CNN-classifier.git
+git clone https://github.com/bxck75/StereoConvNet.git
+# dataset
+mkdir data
+wget http://horatio.cs.nyu.edu/mit/silberman/nyu_depth_v2/nyu_depth_v2_labeled.mat -P data/
