@@ -592,7 +592,7 @@ def main():
     if a.seed is None:
         a.seed = random.randint(0, 2**31 - 1)
 
-    tf.set_random_seed(a.seed)
+    tf.compat.v1.set_random_seed(a.seed)
     np.random.seed(a.seed)
     random.seed(a.seed)
 
